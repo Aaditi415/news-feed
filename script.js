@@ -23,16 +23,15 @@ const newsType = document.getElementById("newsType");
 var newsDataArr = [];
 
 // apis 
-const API_KEY = "934f789d6cf44808b5d23a46970f119a";
-// const API_KEY = "140920a7aece4fe4ae0b1c9b07951948";
-const HEADLINES_NEWS = "https://newsapi.org/v2/top-headlines?country=in&apiKey=";
-const GENERAL_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=general&apiKey=";
-const BUSINESS_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=";
-const SPORTS_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=";
-const TECHNOLOGY_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=technology&pageSize=8&apiKey=";
-const ENTERTAINMENT_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=";
-const SCIENCE_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=science&apiKey=";
-const HEALTH_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=";
+const API_KEY = CONFIG.API_KEY;
+const HEADLINES_NEWS = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
+const GENERAL_NEWS = `https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=${API_KEY}`;
+const BUSINESS_NEWS = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${API_KEY}`;
+const SPORTS_NEWS = `https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=${API_KEY}`;
+const TECHNOLOGY_NEWS = `https://newsapi.org/v2/top-headlines?country=us&category=technology&pageSize=8&apiKey=${API_KEY}`;
+const ENTERTAINMENT_NEWS = `https://newsapi.org/v2/top-headlines?country=us&category=entertainment&apiKey=${API_KEY}`;
+const SCIENCE_NEWS = `https://newsapi.org/v2/top-headlines?country=us&category=science&apiKey=${API_KEY}`;
+const HEALTH_NEWS = `https://newsapi.org/v2/top-headlines?country=us&category=health&apiKey=${API_KEY}`;
 
 const SEARCH_NEWS = "https://newsapi.org/v2/everything?q=";
 
@@ -166,14 +165,14 @@ searchBtn.addEventListener("click", () => {
 });
 
 const fetchHeadlines = async() => {
-    const response = await fetch(HEADLINES_NEWS + API_KEY);
+    const response = await fetch(HEADLINES_NEWS);
     newsDataArr = [];
     if (response.status >= 200 && response.status < 300) {
         const myJson = await response.json();
         newsDataArr = myJson.articles;
     } else {
         // handle errors
-        console.log(response.status, response.statusText);
+        // console.log(response.status, response.statusText);
         newsdetails.innerHTML = "<h5>No data found.</h5>"
         return;
     }
@@ -183,28 +182,28 @@ const fetchHeadlines = async() => {
 
 
 const fetchGeneralNews = async() => {
-    const response = await fetch(GENERAL_NEWS + API_KEY);
+    const response = await fetch(GENERAL_NEWS);
     newsDataArr = [];
     if (response.status >= 200 && response.status < 300) {
         const myJson = await response.json();
         newsDataArr = myJson.articles;
     } else {
         // handle errors
-        console.log(response.status, response.statusText);
+        // console.log(response.status, response.statusText);
         newsdetails.innerHTML = "<h5>No data found.</h5>"
         return;
     }
     displayNews();
 }
 const fetchBusinessNews = async() => {
-    const response = await fetch(BUSINESS_NEWS + API_KEY);
+    const response = await fetch(BUSINESS_NEWS);
     newsDataArr = [];
     if (response.status >= 200 && response.status < 300) {
         const myJson = await response.json();
         newsDataArr = myJson.articles;
     } else {
         // handle errors
-        console.log(response.status, response.statusText);
+        // console.log(response.status, response.statusText);
         newsdetails.innerHTML = "<h5>No data found.</h5>"
         return;
     }
@@ -213,14 +212,14 @@ const fetchBusinessNews = async() => {
 }
 
 const fetchSportsNews = async() => {
-    const response = await fetch(SPORTS_NEWS + API_KEY);
+    const response = await fetch(SPORTS_NEWS);
     newsDataArr = [];
     if (response.status >= 200 && response.status < 300) {
         const myJson = await response.json();
         newsDataArr = myJson.articles;
     } else {
         // handle errors
-        console.log(response.status, response.statusText);
+        // console.log(response.status, response.statusText);
         newsdetails.innerHTML = "<h5>No data found.</h5>"
         return;
     }
@@ -229,14 +228,14 @@ const fetchSportsNews = async() => {
 }
 
 const fetchTechnologyNews = async() => {
-    const response = await fetch(TECHNOLOGY_NEWS + API_KEY);
+    const response = await fetch(TECHNOLOGY_NEWS);
     newsDataArr = [];
     if (response.status >= 200 && response.status < 300) {
         const myJson = await response.json();
         newsDataArr = myJson.articles;
     } else {
         // handle errors
-        console.log(response.status, response.statusText);
+        // console.log(response.status, response.statusText);
         newsdetails.innerHTML = "<h5>No data found.</h5>"
         return;
     }
@@ -245,15 +244,15 @@ const fetchTechnologyNews = async() => {
 }
 
 const fetchEntertainmentNews = async() => {
-    const response = await fetch(ENTERTAINMENT_NEWS + API_KEY);
+    const response = await fetch(ENTERTAINMENT_NEWS);
     newsDataArr = [];
     if (response.status >= 200 && response.status < 300) {
         const myJson = await response.json();
-        console.log(myJson);
+        // console.log(myJson);
         newsDataArr = myJson.articles;
     } else {
         // handle errors
-        console.log(response.status, response.statusText);
+        // console.log(response.status, response.statusText);
         newsdetails.innerHTML = "<h5>No data found.</h5>"
         return;
     }
@@ -262,15 +261,15 @@ const fetchEntertainmentNews = async() => {
 }
 
 const fetchScienceNews = async() => {
-    const response = await fetch(SCIENCE_NEWS + API_KEY);
+    const response = await fetch(SCIENCE_NEWS);
     newsDataArr = [];
     if (response.status >= 200 && response.status < 300) {
         const myJson = await response.json();
-        console.log(myJson);
+        // console.log(myJson);
         newsDataArr = myJson.articles;
     } else {
         // handle errors
-        console.log(response.status, response.statusText);
+        // console.log(response.status, response.statusText);
         newsdetails.innerHTML = "<h5>No data found.</h5>"
         return;
     }
@@ -279,15 +278,15 @@ const fetchScienceNews = async() => {
 }
 
 const fetchHealthNews = async() => {
-    const response = await fetch(HEALTH_NEWS + API_KEY);
+    const response = await fetch(HEALTH_NEWS);
     newsDataArr = [];
     if (response.status >= 200 && response.status < 300) {
         const myJson = await response.json();
-        console.log(myJson);
+        // console.log(myJson);
         newsDataArr = myJson.articles;
     } else {
         // handle errors
-        console.log(response.status, response.statusText);
+        // console.log(response.status, response.statusText);
         newsdetails.innerHTML = "<h5>No data found.</h5>"
         return;
     }
@@ -307,7 +306,7 @@ const fetchQueryNews = async() => {
         newsDataArr = myJson.articles;
     } else {
         //error handle
-        console.log(response.status, response.statusText);
+        // console.log(response.status, response.statusText);
         newsdetails.innerHTML = "<h5>No data found.</h5>"
         return;
     }
@@ -316,28 +315,28 @@ const fetchQueryNews = async() => {
 }
 
 const fetchGeneralNews1 = async() => {
-    const response = await fetch(GENERAL_NEWS + API_KEY);
+    const response = await fetch(GENERAL_NEWS);
     newsDataArr = [];
     if (response.status >= 200 && response.status < 300) {
         const myJson = await response.json();
         newsDataArr = myJson.articles;
     } else {
         // handle errors
-        console.log(response.status, response.statusText);
+        // console.log(response.status, response.statusText);
         newsdetails.innerHTML = "<h5>No data found.</h5>"
         return;
     }
     displayGeneralNews();
 }
 const fetchBusinessNews1 = async() => {
-    const response = await fetch(BUSINESS_NEWS + API_KEY);
+    const response = await fetch(BUSINESS_NEWS);
     newsDataArr = [];
     if (response.status >= 200 && response.status < 300) {
         const myJson = await response.json();
         newsDataArr = myJson.articles;
     } else {
         // handle errors
-        console.log(response.status, response.statusText);
+        // console.log(response.status, response.statusText);
         newsdetails.innerHTML = "<h5>No data found.</h5>"
         return;
     }
@@ -345,28 +344,28 @@ const fetchBusinessNews1 = async() => {
 
 }
 const fetchTechnologyNews1 = async() => {
-    const response = await fetch(TECHNOLOGY_NEWS + API_KEY);
+    const response = await fetch(TECHNOLOGY_NEWS);
     newsDataArr = [];
     if (response.status >= 200 && response.status < 300) {
         const myJson = await response.json();
         newsDataArr = myJson.articles;
     } else {
         // handle errors
-        console.log(response.status, response.statusText);
+        // console.log(response.status, response.statusText);
         newsdetails.innerHTML = "<h5>No data found.</h5>"
         return;
     }
     displayTechnologyNews();
 }
 const fetchSportsNews1 = async() => {
-    const response = await fetch(SPORTS_NEWS + API_KEY);
+    const response = await fetch(SPORTS_NEWS);
     newsDataArr = [];
     if (response.status >= 200 && response.status < 300) {
         const myJson = await response.json();
         newsDataArr = myJson.articles;
     } else {
         // handle errors
-        console.log(response.status, response.statusText);
+        // console.log(response.status, response.statusText);
         newsdetails.innerHTML = "<h5>No data found.</h5>"
         return;
     }
@@ -375,15 +374,15 @@ const fetchSportsNews1 = async() => {
 }
 
 const fetchEntertainmentNews1 = async() => {
-    const response = await fetch(ENTERTAINMENT_NEWS + API_KEY);
+    const response = await fetch(ENTERTAINMENT_NEWS);
     newsDataArr = [];
     if (response.status >= 200 && response.status < 300) {
         const myJson = await response.json();
-        // console.log(myJson);
+        // // console.log(myJson);
         newsDataArr = myJson.articles;
     } else {
         // handle errors
-        console.log(response.status, response.statusText);
+        // console.log(response.status, response.statusText);
         newsdetails.innerHTML = "<h5>No data found.</h5>"
         return;
     }
@@ -392,15 +391,15 @@ const fetchEntertainmentNews1 = async() => {
 }
 
 const fetchScienceNews1 = async() => {
-    const response = await fetch(SCIENCE_NEWS + API_KEY);
+    const response = await fetch(SCIENCE_NEWS);
     newsDataArr = [];
     if (response.status >= 200 && response.status < 300) {
         const myJson = await response.json();
-        console.log(myJson);
+        // console.log(myJson);
         newsDataArr = myJson.articles;
     } else {
         // handle errors
-        console.log(response.status, response.statusText);
+        // console.log(response.status, response.statusText);
         newsdetails.innerHTML = "<h5>No data found.</h5>"
         return;
     }
